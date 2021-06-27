@@ -1,0 +1,8 @@
+# LK4500RMC (f=-400mm cylindrical lens (flat window in the transverse plane))
+
+f: -400.0e-3
+R1: -183.4e-3
+R2: 1000000000
+n1: 1.0
+n2: 1.4496
+d: 3.6e-3

@@ -1,0 +1,8 @@
+# LK4245RMC (f=-100mm cylindrical lens (flat window in the transverse plane))
+
+f: -100.0e-3
+R1: -45.8e-3
+R2: 1000000000
+n1: 1.0
+n2: 1.4496
+d: 4.5e-3
