@@ -235,3 +235,6 @@ if __name__ == "__main__":
     telescope.catalog_lens(z0=260 * mm, part_no="./catalog/LBF254050C")
     telescope.thin_lens(z0=467 * mm, f=157 * mm)
     telescope.draw(alpha=0.1)
+    w_input = telescope.beams[0].waist(z_span[0])
+    w_output = telescope.beams[-1].waist(z_span[-1])
+    print(f"The transverse magnification is {w_output/w_input:.2f}")
