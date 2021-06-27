@@ -36,3 +36,4 @@ The transverse magnification is 3.15
 # We can also use the built-in "draw" method to visualize the system
 >> telescope.draw(alpha=0.1)
 ```
+![alt text](/examples/example_1.png?raw=true)
