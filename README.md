@@ -2,6 +2,9 @@
 
 A(nother) simple, one-dimensional gaussian beam optimizer using ray-transfer matrix methods and q-beam. The goal is to eventually populate a "catalog" from the publicly available commercial lens parameters from mainstream manufacturers. 
 
+:warning: | The "optimization" methods are still under development. Only beam propagation is supported at the moment.
+:---: | :---: 
+
 ## Installation
 Clone the repository into a local file directory. Will hopefully package it in the near future... but no promises.
 
