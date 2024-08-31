@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 # Update matplotlib style
 plt.rcParams.update(
     {
-        "text.usetex": True,
+        "text.usetex": False,
         "scatter.edgecolors": "k",
         "image.cmap": "RdBu_r",
         "image.origin": "lower",
@@ -23,8 +23,7 @@ plt.rcParams.update(
 )
 
 from physunits import *
-from catalog import loader
-
+# from catalog import loader
 
 class GaussianBeam:
     def __init__(self, wavelength, w0, z0):
@@ -158,10 +157,10 @@ class OpticalSystem:
             z0 (float): lens center along optical axis
             part_no (str): Name of file (must exist as yaml file)
         """
-        catalog_params = loader(part_no)
+        # catalog_params = loader(part_no)
         self.thick_lens(z0, **catalog_params)
 
-    def draw(self, **plot_kwargs):
+    def draw(self, save=False, **plot_kwargs):
         """Draw all beam profiles in their segments"""
         plt.figure()
         ax = plt.subplot(111)
@@ -207,10 +206,13 @@ class OpticalSystem:
             )
 
         plt.xlim((self.segments[0][0] / mm, self.segments[-1][-1] / mm))
-        plt.ylabel(fR"Waist ($\mu \rm m$)")
-        plt.xlabel(fR"$z \,(\rm mm$)")
+        plt.ylabel(fR"Waist (um)")
+        plt.xlabel(fR"z (mm)")
         plt.tight_layout()
-        plt.show()
+        if save: 
+            plt.savefig('./opsys.pdf', dpi=100)    
+        else:
+            plt.show()
 
 
 class Opticsmizer:
@@ -230,9 +232,9 @@ if __name__ == "__main__":
     telescope = OpticalSystem(z=z_span, seed=seed)
 
     # Add a couple of thin lenses
-    telescope.catalog_lens(z0=0 * mm, part_no="./catalog/LA4380")
+    # telescope.catalog_lens(z0=0 * mm, part_no="./catalog/LA4380")
     telescope.thin_lens(z0=207 * mm, f=100 * mm)
-    telescope.catalog_lens(z0=260 * mm, part_no="./catalog/LBF254050C")
+    # telescope.catalog_lens(z0=260 * mm, part_no="./catalog/LBF254050C")
     telescope.thin_lens(z0=467 * mm, f=157 * mm)
     telescope.draw(alpha=0.1)
     w_input = telescope.beams[0].waist(z_span[0])
